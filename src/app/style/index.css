@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --clr-bg-dark: #1f2937;
+  --clr-bg-ligth: #fafafa;
+
+  --clr-text-dark: #fafafa;
+  --clr-text-ligth: #1f2937;
+}
+
+.dark {
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-text-dark);
+}
+
+.ligth {
+  background-color: var(--clr-bg-ligth);
+  color: var(--clr-text-ligth);
+}
