@@ -1,7 +1,10 @@
 import { FC, useState, useLayoutEffect } from "react";
+import parser from "html-react-parser";
+import { useTranslation } from "react-i18next";
+
 import { NavComponent } from "./components/Nav";
 import { SocialMedia } from "./components/SocialMedia";
-import { useTranslation } from "react-i18next";
+
 const App: FC = () => {
   const { t, i18n } = useTranslation(["home"]);
   const [darkMode, setDarkMode] = useState(false);
@@ -33,6 +36,8 @@ const App: FC = () => {
     i18n.changeLanguage(lang);
   }
 
+  const message = t("message", { ns: ["home"] });
+
   return (
     <main
       className={`min-h-screen min-w-screen mx-auto ${
@@ -57,10 +62,9 @@ const App: FC = () => {
             André Souza
           </span>
         </h1>
-        <p className="text-center dark:text-zinc-300 w-[350px] md:w-[700px]">
-          {t("message", { ns: ["home"] })}
-          <strong> Node.JS , PHP, Lua, React.JS </strong>
-        </p>
+        <div className="text-center dark:text-zinc-300 w-[350px] md:w-[700px]">
+          {parser(message)}
+        </div>
         <div className="mt-10 grid grid-cols-4 gap-5">
           <SocialMedia />
         </div>
