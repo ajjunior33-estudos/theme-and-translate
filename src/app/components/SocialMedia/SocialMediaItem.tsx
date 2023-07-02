@@ -11,6 +11,7 @@ const SocialMediaItem: React.FC<SocialMediaItemProps> = ({
   return (
     <a
       href={link}
+      target="_blank"
       rel="noopener noreferrer"
       className="p-4 cursor-pointer bg-[#f4f4f5] dark:bg-[#374151] rounded-full"
     >
