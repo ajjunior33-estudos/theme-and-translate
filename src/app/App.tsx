@@ -7,7 +7,7 @@ const App: FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   useLayoutEffect(() => {
     const theme = localStorage.getItem("@R.THEME.AJ");
-    const lang = localStorage.getItem("i18nextLng");
+    const lang = localStorage.getItem("@R.LANG.AJ");
     if (theme && theme !== undefined) {
       setDarkMode(theme === "dark" ? true : false);
     }
@@ -29,6 +29,7 @@ const App: FC = () => {
 
   function toggleLanguage() {
     const lang = i18n.language === "pt-BR" ? "en-US" : "pt-BR";
+    localStorage.setItem("@R.LANG.AJ", lang);
     i18n.changeLanguage(lang);
   }
 
