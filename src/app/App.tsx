@@ -1,13 +1,30 @@
-import { FC, useState } from "react";
+import { FC, useState, useLayoutEffect } from "react";
 import { NavComponent } from "./components/Nav";
 import { SocialMedia } from "./components/SocialMedia";
 import { useTranslation } from "react-i18next";
 const App: FC = () => {
   const { t, i18n } = useTranslation(["home"]);
   const [darkMode, setDarkMode] = useState(false);
+  useLayoutEffect(() => {
+    const theme = localStorage.getItem("@R.THEME.AJ");
+    const lang = localStorage.getItem("i18nextLng");
+    if (theme && theme !== undefined) {
+      setDarkMode(theme === "dark" ? true : false);
+    }
+
+    if (lang && lang !== undefined) {
+      i18n.changeLanguage(lang);
+    }
+  }, []);
 
   function toggleDarkMode() {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
+    setDarkMode((prevDarkMode) => {
+      localStorage.setItem(
+        "@R.THEME.AJ",
+        !prevDarkMode === true ? "dark" : "light"
+      );
+      return !prevDarkMode;
+    });
   }
 
   function toggleLanguage() {
